@@ -193,6 +193,7 @@
                             requireInteraction: options.requireInteraction
                         }
                     );
+                    console.log(notification);
                 } catch (e) {
                     if (w.navigator) {
                         w.navigator.serviceWorker.register(options.serviceWorker || 'sw.js');
@@ -209,12 +210,13 @@
                                 }
                             );
                         });
+                        console.log("sw");
                     }
                 }
 
             /* Legacy webkit browsers */
             } else if (w.webkitNotifications) {
-
+                console.log("webkit");
                 notification = w.webkitNotifications.createNotification(
                     options.icon,
                     title,
@@ -225,6 +227,7 @@
 
             /* Firefox Mobile */
             } else if (navigator.mozNotification) {
+                console.log("moz");
 
                 notification = navigator.mozNotification.createNotification(
                     title,
@@ -285,7 +288,7 @@
 
                 notification.addEventListener('close', onClose);
                 notification.addEventListener('cancel', onClose);
-            } else if (isFunction(options.onClick)) {
+            } else {
                 /* Notification callback for service worker */
                 if (isFunction(options.onClick)) {
                     w.addEventListener('notificationclick', function(event) {

@@ -7,20 +7,20 @@ module.exports = function(config) {
     // base path that will be used to resolve all patterns (eg. files, exclude)
     basePath: '',
 
-
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['jasmine'],
 
     plugins: [
         'karma-jasmine',
-        'karma-firefox-launcher',
+        'karma-phantomjs-launcher',
         'karma-mocha-reporter',
         'karma-coverage'
     ],
 
     // list of files / patterns to load in the browser
     files: [
+      'node_modules/babel-polyfill/dist/polyfill.js',
       'push.js',
       'push_tests.js'
     ],
@@ -57,7 +57,7 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Firefox'],
+    browsers: ['PhantomJS'],
 
 
     // Continuous Integration mode

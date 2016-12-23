@@ -114,6 +114,7 @@ describe('creating notifications', function () {
         });
 
         promise.then(function(wrapper) {
+            console.log(wrapper.get());
             var notification = wrapper.get();
             expect(notification.title).toBe(TEST_TITLE);
             expect(notification.body).toBe(TEST_BODY);
